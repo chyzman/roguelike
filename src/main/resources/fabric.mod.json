@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "roguelike",
+  "version": "${version}",
+  "name": "roguelike",
+  "description": "",
+  "authors": [],
+  "contact": {
+    "repo": "https://github.com/Chyzalt/roguelike"
+  },
+  "license": "MIT",
+  "icon": "assets/roguelike/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": ["com.chyzman.roguelike.client.RoguelikeClient"],
+    "main": ["com.chyzman.roguelike.Roguelike"]
+  },
+  "mixins": [
+    "roguelike.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

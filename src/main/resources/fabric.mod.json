@@ -3,10 +3,10 @@
   "id": "roguelike",
   "version": "${version}",
   "name": "roguelike",
-  "description": "",
+  "description": "I hate the letter T",
   "authors": [],
   "contact": {
-    "repo": "https://github.com/Chyzalt/roguelike"
+    "repo": "https://github.com/chyzman/roguelike"
   },
   "license": "MIT",
   "icon": "assets/roguelike/icon.png",
@@ -19,8 +19,8 @@
     "roguelike.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=${loader_version}",
+    "fabricloader": ">=0.15",
     "fabric": "*",
-    "minecraft": "${minecraft_version}"
+    "minecraft": "*"
   }
 }

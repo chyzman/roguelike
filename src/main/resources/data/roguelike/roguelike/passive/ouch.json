@@ -1,0 +1,16 @@
+{
+  "Stats": [
+  ],
+  "Modifiers": [
+    {
+      "Attribute": "minecraft:generic.attack_damage",
+      "Value": 0.1
+    },
+    {
+      "Attribute": "minecraft:generic.max_health",
+      "Value": -0.1
+    }
+  ],
+  "Multipliers": [
+  ]
+}

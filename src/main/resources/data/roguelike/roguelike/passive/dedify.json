@@ -1,0 +1,12 @@
+{
+  "Stats": [
+  ],
+  "Modifiers": [
+  ],
+  "Multipliers": [
+    {
+      "Attribute": "minecraft:generic.attack_damage",
+      "Value": 100000.0
+    }
+  ]
+}

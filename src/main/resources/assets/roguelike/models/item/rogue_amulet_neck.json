@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "roguelike:item/rogue_amulet_neck"
+  }
+}

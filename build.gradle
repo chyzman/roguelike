@@ -83,11 +83,11 @@ loom {
 
     var username = "chyzman"
     var uuid = "09de8a6d86bf4c15bb93ce3384ce4e96"
-    var javaAgent = "C:\\Users\\Chyzalt\\.gradle\\caches\\modules-2\\files-2.1\\net.fabricmc\\sponge-mixin\\0.12.5+mixin.0.8.5\\8d31fb97c3e0cd7c8dad3441851c523bcfae6d8e\\sponge-mixin-0.12.5+mixin.0.8.5.jar"
+    var javaAgent = "C:\\Users\\Administrator\\.gradle\\caches\\modules-2\\files-2.1\\net.fabricmc\\sponge-mixin\\0.12.5+mixin.0.8.5\\8d31fb97c3e0cd7c8dad3441851c523bcfae6d8e\\sponge-mixin-0.12.5+mixin.0.8.5.jar"
     var renderDocPath = "C:\\Program Files\\RenderDoc\\renderdoc.dll"
 
     runs {
-        client {
+        chyzClient {
             client()
             ideConfigGenerated true
             name "Minecraft Client (Chyzman)"

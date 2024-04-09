@@ -1,3 +1,6 @@
 {
-  "item.roguelike.rogue_amulet": "Rogue's Amulet"
+  "item.roguelike.rogue_amulet": "Rogue's Amulet",
+  "command.rogueitem.fail.no_amulet": "Could not find a Rogue's Amulet in hand or equipped.",
+  "command.rogueitem.passive.add.success": "Added %s at index %s to %s's %s",
+  "roguePassive.roguelike.test_passive.description.but.its.keyed": "ayo this description is using a translation key"
 }

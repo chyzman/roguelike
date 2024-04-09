@@ -1,0 +1,14 @@
+{
+  "Name": "look at me i have a plaintext name",
+  "Description": "roguePassive.roguelike.test_passive.description.but.its.keyed",
+  "Stats": [
+    {
+      "Attribute": "minecraft:generic.attack_damage",
+      "Value": 1.0
+    }
+  ],
+  "Modifiers": [
+  ],
+  "Multipliers": [
+  ]
+}

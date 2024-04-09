@@ -1,0 +1,12 @@
+{
+  "Stats": [
+  ],
+  "Modifiers": [  
+    {
+      "Attribute": "minecraft:generic.max_health",
+      "Value": 0.1
+    }
+  ],
+  "Multipliers": [
+  ]
+}

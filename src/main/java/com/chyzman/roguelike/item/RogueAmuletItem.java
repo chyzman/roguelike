@@ -6,6 +6,7 @@ import io.wispforest.owo.serialization.endec.BuiltInEndecs;
 import io.wispforest.owo.serialization.endec.KeyedEndec;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.item.TooltipData;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -17,6 +18,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 import static com.chyzman.roguelike.Roguelike.PASSIVE_REGISTRY;
 
@@ -39,7 +42,7 @@ public class RogueAmuletItem extends Item {
     public static List<RoguelikePassive> getPassives(ItemStack stack, DynamicRegistryManager drm) {
         var registry = drm.get(PASSIVE_REGISTRY);
         var passives = stack.get(PASSIVES);
-        return passives.stream().map(registry::get).toList();
+        return passives.stream().map(registry::get).filter(Objects::nonNull).toList();
     }
 
     public static void setPassives(ItemStack stack, List<RoguelikePassive> passives, DynamicRegistryManager drm) {
@@ -111,5 +114,13 @@ public class RogueAmuletItem extends Item {
 
     public static void setVisualScale(ItemStack stack, double visualScale) {
         stack.put(VISUAL_SCALE, visualScale);
+    }
+
+    @Override
+    public Optional<net.minecraft.client.item.TooltipData> getTooltipData(ItemStack stack) {
+        return Optional.of(new TooltipData(stack));
+    }
+
+    public record TooltipData(ItemStack stack) implements net.minecraft.client.item.TooltipData {
     }
 }

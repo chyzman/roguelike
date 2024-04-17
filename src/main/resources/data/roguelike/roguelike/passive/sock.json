@@ -1,9 +1,9 @@
 {
   "Stats": [
   ],
-  "Modifiers": [  
+  "Modifiers": [
     {
-      "Attribute": "minecraft:generic.max_health",
+      "Attribute": "minecraft:generic.movement_speed",
       "Value": 0.1
     }
   ],

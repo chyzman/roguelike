@@ -33,7 +33,6 @@ public class RogueAmuletItemRenderer implements BuiltinItemRendererRegistry.Dyna
         if (world == null) return;
         var time = System.nanoTime() / 1000000L;
         var trueSeed = (time / (1000 + seed % 1000)) + seed % 100000;
-        var random = new Random(seed);
 
         matrices.push();
         if (neck) {
@@ -123,18 +122,18 @@ public class RogueAmuletItemRenderer implements BuiltinItemRendererRegistry.Dyna
                 int index = (int) (trueSeed % passives.size());
                 if (index >= 0 && index < passives.size()){
                     var displayPassive = passives.get(index);
-                    var model = client.getBakedModelManager().getModel(displayPassive.getModel(client.world.getRegistryManager()));
-
-                    client.getItemRenderer().renderItem(
-                            stack,
-                            ModelTransformationMode.NONE,
-                            mode.getIndex() == 1 || mode.getIndex() == 3,
-                            matrices,
-                            vertexConsumers,
-                            light,
-                            overlay,
-                            model != null ? model : client.getBakedModelManager().getMissingModel()
-                    );
+                    if (displayPassive != null) {
+                        client.getItemRenderer().renderItem(
+                                stack,
+                                ModelTransformationMode.NONE,
+                                mode.getIndex() == 1 || mode.getIndex() == 3,
+                                matrices,
+                                vertexConsumers,
+                                light,
+                                overlay,
+                                displayPassive.getModel(client.world.getRegistryManager())
+                        );
+                    }
                 }
             }
         }

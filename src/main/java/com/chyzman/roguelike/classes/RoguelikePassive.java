@@ -1,12 +1,23 @@
 package com.chyzman.roguelike.classes;
 
+import com.chyzman.roguelike.screen.component.ModelComponent;
 import io.wispforest.owo.serialization.Endec;
 import io.wispforest.owo.serialization.endec.BuiltInEndecs;
 import io.wispforest.owo.serialization.endec.StructEndecBuilder;
+import io.wispforest.owo.ui.component.Components;
+import io.wispforest.owo.ui.container.Containers;
+import io.wispforest.owo.ui.container.FlowLayout;
+import io.wispforest.owo.ui.core.Insets;
+import io.wispforest.owo.ui.core.Sizing;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -69,13 +80,26 @@ public class RoguelikePassive {
         return Text.translatable(getKey(drm).getValue().toTranslationKey("roguelike.passive", "description"));
     }
 
-    public Identifier getModel(DynamicRegistryManager drm) {
+    public RegistryKey<RoguelikePassive> getKey(DynamicRegistryManager drm) {
+        return drm.get(PASSIVE_REGISTRY).getKey(this).orElse(null);
+    }
+
+    @Environment(EnvType.CLIENT)
+    public BakedModel getModel(DynamicRegistryManager drm) {
+        return MinecraftClient.getInstance().getBakedModelManager().getModel(getModelId(drm));
+    }
+
+    protected Identifier getModelId(DynamicRegistryManager drm) {
         if (model != null) return model;
         return getKey(drm).getValue().withPrefixedPath("roguelike/passive/");
     }
 
-    public RegistryKey<RoguelikePassive> getKey(DynamicRegistryManager drm) {
-        return drm.get(PASSIVE_REGISTRY).getKey(this).orElse(null);
+    @Environment(EnvType.CLIENT)
+    public FlowLayout getTooltipComponent(DynamicRegistryManager drm) {
+        var flow = Containers.horizontalFlow(Sizing.content(), Sizing.content());
+        flow.child(new ModelComponent(getModel(drm)).sizing(Sizing.fixed(MinecraftClient.getInstance().textRenderer.fontHeight)));
+        flow.child(Components.label(getName(drm)).margins(Insets.left(1)));
+        return flow;
     }
 
     //region GETTERS AND SETTERS

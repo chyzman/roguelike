@@ -1,6 +1,9 @@
 {
   "item.roguelike.rogue_amulet": "Rogue's Amulet",
+  "item.roguelike.rogue_amulet.passives": "Passives:",
   "command.rogueitem.fail.no_amulet": "Could not find a Rogue's Amulet in hand or equipped.",
   "command.rogueitem.passive.add.success": "Added %s at index %s to %s's %s",
-  "roguePassive.roguelike.test_passive.description.but.its.keyed": "ayo this description is using a translation key"
+  "roguePassive.roguelike.test_passive.description.but.its.keyed": "ayo this description is using a translation key",
+  "roguelike.passive.roguelike.sock.name": "Glisco's left Sock",
+  "roguelike.passive.roguelike.sock.description": "A sock that was once worn by Glisco. It's a bit smelly."
 }

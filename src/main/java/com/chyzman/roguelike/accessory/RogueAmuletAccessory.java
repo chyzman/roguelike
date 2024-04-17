@@ -37,9 +37,11 @@ public class RogueAmuletAccessory implements Accessory {
         Map<EntityAttribute, Double> tempMultipliers = new HashMap<>();
 
         RogueAmuletItem.getPassives(stack, world.getRegistryManager()).forEach(passive -> {
-            passive.stats().forEach(stat -> tempStats.merge(stat.attribute(), stat.value(), Double::sum));
-            passive.modifiers().forEach(modifier -> tempMultipliers.merge(modifier.attribute(), modifier.value(), Double::sum));
-            passive.multipliers().forEach(multiplier -> tempMultipliers.merge(multiplier.attribute(), multiplier.value(), (a, b) -> a * b));
+            if (passive != null) {
+                passive.stats().forEach(stat -> tempStats.merge(stat.attribute(), stat.value(), Double::sum));
+                passive.modifiers().forEach(modifier -> tempMultipliers.merge(modifier.attribute(), modifier.value(), Double::sum));
+                passive.multipliers().forEach(multiplier -> tempMultipliers.merge(multiplier.attribute(), multiplier.value(), (a, b) -> a * b));
+            }
         });
 
         tempStats.forEach((attribute, value) -> modifiers.put(attribute, new EntityAttributeModifier(Roguelike.getAttributeUUID(attribute, EntityAttributeModifier.Operation.ADDITION),"Rogue Amulet Stat", value, EntityAttributeModifier.Operation.ADDITION)));
@@ -52,19 +54,19 @@ public class RogueAmuletAccessory implements Accessory {
     @Environment(EnvType.CLIENT)
     public void getExtraTooltip(ItemStack stack, List<Text> tooltips) {
         Accessory.super.getExtraTooltip(stack, tooltips);
-        var world = MinecraftClient.getInstance().world;
-        if (world == null) return;
-        var passives = RogueAmuletItem.getPassives(stack, world.getRegistryManager());
-
-        var registry = world.getRegistryManager().get(PASSIVE_REGISTRY);
-        if (passives.isEmpty()) return;
-        tooltips.add(Text.literal("Passives:"));
-        passives.forEach(passive -> {
-            var id = registry.getId(passive);
-            if (id == null) return;
-            tooltips.add(Text.literal("  ").append(passive.getName(world.getRegistryManager())));
-            tooltips.add(Text.literal("    ").append(passive.getDescription(world.getRegistryManager())));
-        });
+//        var world = MinecraftClient.getInstance().world;
+//        if (world == null) return;
+//        var passives = RogueAmuletItem.getPassives(stack, world.getRegistryManager());
+//
+//        var registry = world.getRegistryManager().get(PASSIVE_REGISTRY);
+//        if (passives.isEmpty()) return;
+//        tooltips.add(Text.literal("Passives:"));
+//        passives.forEach(passive -> {
+//            var id = registry.getId(passive);
+//            if (id == null) return;
+//            tooltips.add(Text.literal("  ").append(passive.getName(world.getRegistryManager())));
+//            tooltips.add(Text.literal("    ").append(passive.getDescription(world.getRegistryManager())));
+//        });
     }
 
     @Environment(EnvType.CLIENT)

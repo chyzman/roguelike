@@ -3,7 +3,7 @@ package com.chyzman.roguelike.registry;
 import com.chyzman.roguelike.accessory.RogueAmuletAccessory;
 import com.chyzman.roguelike.item.RogueAmuletItem;
 import io.wispforest.accessories.api.AccessoriesAPI;
-import io.wispforest.accessories.api.client.AccessoriesRendererRegistery;
+import io.wispforest.accessories.api.client.AccessoriesRendererRegistry;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -28,6 +28,6 @@ public class RoguelikeRegistry {
 
     @Environment(EnvType.CLIENT)
     public static void clientInit() {
-        AccessoriesRendererRegistery.registerRenderer(ROGUE_AMULET, RogueAmuletAccessory.Renderer::new);
+        AccessoriesRendererRegistry.registerRenderer(ROGUE_AMULET, RogueAmuletAccessory.Renderer::new);
     }
 }

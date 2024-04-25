@@ -1,12 +1,12 @@
 package com.chyzman.roguelike.item;
 
+
 import com.chyzman.roguelike.classes.RoguelikePassive;
 import io.wispforest.owo.serialization.Endec;
 import io.wispforest.owo.serialization.endec.BuiltInEndecs;
 import io.wispforest.owo.serialization.endec.KeyedEndec;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.client.item.TooltipData;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

@@ -5,5 +5,11 @@
   "command.rogueitem.passive.add.success": "Added %s at index %s to %s's %s",
   "roguePassive.roguelike.test_passive.description.but.its.keyed": "ayo this description is using a translation key",
   "roguelike.passive.roguelike.sock.name": "Glisco's left Sock",
-  "roguelike.passive.roguelike.sock.description": "A sock that was once worn by Glisco. It's a bit smelly."
+  "roguelike.passive.roguelike.sock.description": "A sock that was once worn by Glisco. It's a bit smelly.",
+  "attribute.modifier.equals.3": "%s%% %s",
+  "attribute.modifier.equals.4": "X%s %s",
+  "attribute.modifier.plus.3": "+%s%% %s",
+  "attribute.modifier.plus.4": "X%s %s",
+  "attribute.modifier.take.3": "-%s%% %s",
+  "attribute.modifier.take.4": "X%s %s"
 }

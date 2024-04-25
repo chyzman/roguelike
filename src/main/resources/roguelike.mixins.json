@@ -4,6 +4,10 @@
   "package": "com.chyzman.roguelike.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "EntityAttributeInstanceMixin",
+    "EntityAttributeModifierMixin",
+    "EntityAttributeModifierOperationMixin",
+    "ItemStackMixin"
   ],
   "client": [
   ],

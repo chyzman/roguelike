@@ -13,8 +13,6 @@ import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 import static com.chyzman.roguelike.util.RoguelikeRegistryHelper.id;
@@ -25,6 +23,7 @@ public class Roguelike implements ModInitializer {
     private static final Table<EntityAttribute, EntityAttributeModifier.Operation, UUID> CACHTRIBUTE = HashBasedTable.create();
 
     public static final RegistryKey<Registry<RoguelikePassive>> PASSIVE_REGISTRY = RegistryKey.ofRegistry(id("passive"));
+
 
     @Override
     public void onInitialize() {

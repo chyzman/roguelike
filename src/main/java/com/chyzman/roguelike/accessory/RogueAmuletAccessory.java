@@ -3,6 +3,7 @@ package com.chyzman.roguelike.accessory;
 import com.chyzman.roguelike.Roguelike;
 import com.chyzman.roguelike.item.RogueAmuletItem;
 import com.chyzman.roguelike.item.RogueAmuletItemRenderer;
+import com.chyzman.roguelike.registry.RoguelikeAttributeModifierOpperations;
 import com.google.common.collect.Multimap;
 import io.wispforest.accessories.api.Accessory;
 import io.wispforest.accessories.api.client.AccessoryRenderer;
@@ -24,8 +25,6 @@ import net.minecraft.text.Text;
 
 import java.util.*;
 
-import static com.chyzman.roguelike.Roguelike.PASSIVE_REGISTRY;
-
 public class RogueAmuletAccessory implements Accessory {
     @Override
     public Multimap<EntityAttribute, EntityAttributeModifier> getModifiers(ItemStack stack, SlotReference reference, UUID uuid) {
@@ -34,18 +33,20 @@ public class RogueAmuletAccessory implements Accessory {
         if (world == null) return modifiers;
 
         Map<EntityAttribute, Double> tempStats = new HashMap<>();
-        Map<EntityAttribute, Double> tempMultipliers = new HashMap<>();
+        Map<EntityAttribute, Double> tempMultiplierAdditions = new HashMap<>();
+        Map<EntityAttribute, Double> tempMultiplierMultipliers = new HashMap<>();
 
         RogueAmuletItem.getPassives(stack, world.getRegistryManager()).forEach(passive -> {
             if (passive != null) {
                 passive.stats().forEach(stat -> tempStats.merge(stat.attribute(), stat.value(), Double::sum));
-                passive.modifiers().forEach(modifier -> tempMultipliers.merge(modifier.attribute(), modifier.value(), Double::sum));
-                passive.multipliers().forEach(multiplier -> tempMultipliers.merge(multiplier.attribute(), multiplier.value(), (a, b) -> a * b));
+                passive.modifiers().forEach(modifier -> tempMultiplierAdditions.merge(modifier.attribute(), modifier.value(), Double::sum));
+                passive.multipliers().forEach(multiplier -> tempMultiplierMultipliers.merge(multiplier.attribute(), multiplier.value(), (a, b) -> a * b));
             }
         });
 
         tempStats.forEach((attribute, value) -> modifiers.put(attribute, new EntityAttributeModifier(Roguelike.getAttributeUUID(attribute, EntityAttributeModifier.Operation.ADDITION),"Rogue Amulet Stat", value, EntityAttributeModifier.Operation.ADDITION)));
-        tempMultipliers.forEach((attribute, value) -> modifiers.put(attribute, new EntityAttributeModifier(Roguelike.getAttributeUUID(attribute, EntityAttributeModifier.Operation.MULTIPLY_TOTAL),"Rogue Amulet Multiplier", value, EntityAttributeModifier.Operation.MULTIPLY_TOTAL)));
+        tempMultiplierAdditions.forEach((attribute, value) -> modifiers.put(attribute, new EntityAttributeModifier(Roguelike.getAttributeUUID(attribute, RoguelikeAttributeModifierOpperations.ADD_MULTIPLIER),"Rogue Multiplier Addition", value, RoguelikeAttributeModifierOpperations.ADD_MULTIPLIER)));
+        tempMultiplierMultipliers.forEach((attribute, value) -> modifiers.put(attribute, new EntityAttributeModifier(Roguelike.getAttributeUUID(attribute, RoguelikeAttributeModifierOpperations.MULTIPLY_MULTIPLIER),"Rogue Amulet Multiplier Multiplier", value, RoguelikeAttributeModifierOpperations.MULTIPLY_MULTIPLIER)));
 
         return modifiers;
     }

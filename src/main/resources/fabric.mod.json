@@ -22,5 +22,10 @@
     "fabricloader": ">=0.15",
     "fabric": "*",
     "minecraft": "*"
+  },
+  "custom": {
+    "loom:injected_interfaces": {
+      "net/minecraft/class_1322": ["com/chyzman/roguelike/pond/EntityAttributeModifierDuck"]
+    }
   }
 }

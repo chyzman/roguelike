@@ -2,6 +2,7 @@ package com.chyzman.roguelike;
 
 import com.chyzman.roguelike.classes.RoguelikePassive;
 import com.chyzman.roguelike.command.RogueItemCommand;
+import com.chyzman.roguelike.registry.RoguelikeAttributeRegistry;
 import com.chyzman.roguelike.registry.RoguelikeRegistry;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
@@ -33,6 +34,7 @@ public class Roguelike implements ModInitializer {
                 DynamicRegistries.SyncOption.SKIP_WHEN_EMPTY);
         RoguelikeRegistry.init();
         RogueItemCommand.register();
+        RoguelikeAttributeRegistry.init();
     }
 
     public static UUID getAttributeUUID(EntityAttribute attribute, EntityAttributeModifier.Operation operation) {
